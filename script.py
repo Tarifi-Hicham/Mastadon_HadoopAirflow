@@ -31,7 +31,7 @@ def send_data_to_hdfs(df: pd.DataFrame, data_type: str):
 # Load environment variables from .env
 load_dotenv()
 
-# Access the access token
+# Get the access token (Create a .env file and add access_token variable in it)
 access_token = os.getenv('access_token')
 
 # Create Mastodon API client
