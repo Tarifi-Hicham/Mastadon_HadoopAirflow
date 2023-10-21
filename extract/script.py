@@ -1,11 +1,9 @@
 import pandas as pd
-import json
 from datetime import datetime
 from mastodon import Mastodon
 from hdfs import InsecureClient
 from dotenv import load_dotenv
 import os
-import time
 
 
 # this function will pass through to the HDFS client write()
@@ -32,9 +30,6 @@ def send_data_to_hdfs(df: pd.DataFrame):
 # Load environment variables from .env
 load_dotenv()
 
-# Get the access token (Create a .env file and add access_token variable in it)
-access_token = os.getenv('access_token')
-
 # Create Mastodon API client
 mastodon = Mastodon(
     client_id=os.getenv('Client_key'),
@@ -42,9 +37,6 @@ mastodon = Mastodon(
     access_token=os.getenv('Access_token'),
     api_base_url="https://mastodon.social"
 )
-
-
-
 
 def get_posts(id):
     # toots = mastodon.timeline_hashtag(query,limit=10000)
