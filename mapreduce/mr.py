@@ -30,10 +30,12 @@ class WordCounter(MRJob):
         yield "favourites_count:"+account, post_favourites_count
         yield "reblogs_count:"+account, post_reblogs_count
         yield "visibility:"+post_visibility, 1
-        yield "language"+language, 1
-        yield "media", 1 if len(post_media) > 0 else 0
-        # for tag in post_tags:
-            # yield "tag:"+tag, 1
+        if language:
+            yield "language:"+language, 1
+        yield "media:", 1 if len(post_media) > 0 else 0
+        if post_tags:
+            for tag in post_tags:
+                yield "tag:"+tag["name"], 1
 
     def reducer(self, key, values):
         if "count" in str(key):
