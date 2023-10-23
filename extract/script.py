@@ -20,7 +20,7 @@ def send_data_to_hdfs(df: pd.DataFrame):
     # Connect to HDFS
     client = InsecureClient(host, user=user_name)
 
-    hdfs_filepath = "/user/" + user_name + "/" + datetime.now().strftime('%d%m%Y') + "/posts" + datetime.now().strftime('%H%M%S') + ".json"
+    hdfs_filepath = "/user/" + user_name + "/" + datetime.now().strftime('%d-%m-%Y') + "/posts" + datetime.now().strftime('%H%M%S') + ".json"
 
     # Upload the JSON data to HDFS
     with client.write(hdfs_filepath, overwrite=True) as hdfs_file:
@@ -45,9 +45,9 @@ def get_posts(id):
     for toot in toots:
         posts_data = {
         'post_id': toot['id'],
-        'Account': toot['account'],
-        'Content': toot['content'],
-        'Created_at': toot['created_at'],
+        'account': toot['account'],
+        'content': toot['content'],
+        'created_at': toot['created_at'],
         'favourites_count': toot['favourites_count'],
         'reblogs_count': toot['reblogs_count'],
         'sensitive': toot['sensitive'],
