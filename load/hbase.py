@@ -42,15 +42,6 @@ if post_table not in table_list :
 table_user = connection.table(user_table)
 table_post = connection.table(post_table)
 
-# retreive if there is any data 
-# for data in table_user.scan():
-#     print(data)
-# for data in table_post.scan():
-#     print(data)
-# get the data base on the column family and row key
-# ps = table.row(row='fr',columns=['post:language'])
-# print(ps)
-
 # insert into the tables
 for x in f:
     # get line from the content the text file splited by "
@@ -76,5 +67,7 @@ for x in f:
         table_post.put(row_key, {"post_details:" + column:item[3].strip()})
 
 print("Data was inserted successfully.")
+
+# close connection to txt file and hbase
 f.close()
 connection.close()
