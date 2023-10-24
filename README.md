@@ -38,7 +38,8 @@ It utilizes MapReduce for data processing, stores the results in HBase, and orch
 | Metadata         | Hashtag Name, Associated Toots, Media ID, Media Type, Media URL, Language of the Toot |
 | Interaction Data | Follower ID, Followed User ID, User ID, Liked Toot ID, User ID, Boosted Toot ID |
 
-
+## Tables schema 
+![image](https://github.com/Tarifi-Hicham/Mastadon_HadoopAirflow/assets/125143059/66033ae9-ef4e-40e7-b488-4f5879c82f33)
 
 ## Mission:
 As a data engineer, my primary objective is to maintain a robust big data pipeline capable of extracting data using the Mastodon API and storing it in Hadoop HDFS as JSON files. Subsequently, I will develop a MapReduce script to transform the data into key-value pairs. The processed data will be efficiently stored in HBase, enabling valuable insights to be derived from it. To ensure seamless and efficient workflow management, I will integrate Apache Airflow, a powerful platform for workflow orchestration and management. This integration will facilitate automated execution and real-time monitoring of the data analysis process, ensuring its effectiveness.
