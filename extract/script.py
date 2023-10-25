@@ -20,7 +20,7 @@ def send_data_to_hdfs(df: pd.DataFrame):
     # Connect to HDFS
     client = InsecureClient(host, user=user_name)
 
-    hdfs_filepath = "/user/" + user_name + "/" + datetime.now().strftime('%d-%m-%Y') + "/posts" + datetime.now().strftime('%H%M%S') + ".json"
+    hdfs_filepath = "/user/" + user_name + "/posts" + datetime.now().strftime('%d-%m-%Y') + ".json"
 
     # Upload the JSON data to HDFS
     with client.write(hdfs_filepath, overwrite=True) as hdfs_file:
@@ -71,7 +71,7 @@ posts_data = []
 
 for i in range(count):
     # Specify the last toot id
-    with open('extract/last_toot_id.txt', 'r+') as file:
+    with open('/home/TarifiHadoopAdmin/repositories/Mastadon_HadoopAirflow/extract/last_toot_id.txt', 'r+') as file:
         last_toot_id = file.read().strip()
 
     if last_toot_id != '':
@@ -84,10 +84,10 @@ for i in range(count):
     posts_data += data
 
     # Save the last toot id
-    with open('extract/last_toot_id.txt', 'r+') as file:
+    with open('/home/TarifiHadoopAdmin/repositories/Mastadon_HadoopAirflow/extract/last_toot_id.txt', 'r+') as file:
         file.write(str(posts_data[-1]['post_id']))
-    # print(last_toot_id)
 
+posts_data = get_posts(last_toot_id)
 # Sending Files to hdfs
 print("Sending file to hdfs")
 df_posts = pd.DataFrame(posts_data)

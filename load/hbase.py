@@ -12,7 +12,7 @@ user_table = 'user_table'
 post_table = 'post_table'
 
 # read the content of txt file included on the root.
-f = open("output.txt", "r")
+f = open("/home/TarifiHadoopAdmin/repositories/Mastadon_HadoopAirflow/output.txt", "r")
 
 
 # check if the tables exists.
